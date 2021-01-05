@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div>
+		<h1><span th:text="${heading}"></span></h1>
+		<table class="table table-striped">
+			<thead>
+				<tr scope="row">
+					<th scope="col">ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">QTY</th>			
+			</thead>
+			<tbody>
+				<tr scope="row" th:each="item:${items}">
+					<td th:text="${item.itemId}" />
+					<td th:text="${item.itemName}" />
+					<td th:text="${item.itemPrice}" />
+					<td th:text="${item.itemQty}" />
+					<td>
+						<a class="btn btn-primary" th:href="@{/inventory/edit/{pathitem}(pathitem=${item.itemId})}" role="button">Edit</a>
+					</td>
+					<td>
+						<a class="btn btn-primary" th:href="@{/inventory/delete/{pathitem}(pathitem=${item.itemId})}" role="button" onclick="return confirm('Are you sure?')">Delete</a>
+					</td>
+				</tr>
+			</tbody>			
+		</table>
+		
+		<a class="btn btn-primary btn=lg" th:href="@{/inventory/add}" role="button">Add New Item</a>
+	</div>
+</body>
+
+<script type="text/javascript" src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/popper.js/2.5.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
+
+</html>
